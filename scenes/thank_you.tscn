@@ -1,0 +1,113 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://theme/pexels.tex" type="Texture" id=1]
+[ext_resource path="res://fonts/metal lord.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://music/02_desert_mayhem.ogg" type="AudioStream" id=3]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Control
+
+# Back to Menu
+func _on_back_to_menu_pressed():
+	get_tree().change_scene(\"res://scenes/main_menu.tscn\")
+"
+
+[node name="thank_you" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+script/script = SubResource( 1 )
+
+[node name="background" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="credits" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 450.0
+margin/top = 40.0
+margin/right = 523.0
+margin/bottom = 64.0
+custom_fonts/font = ExtResource( 2 )
+text = "Credits"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="text" type="Label" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 200.0
+margin/top = 280.0
+margin/right = -788.0
+margin/bottom = -256.0
+custom_fonts/font = ExtResource( 2 )
+text = "Most Important is to Thank you for using Dark Matter Simulator"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="back_to_menu" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 820.0
+margin/top = 40.0
+margin/right = 962.0
+margin/bottom = 60.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_hover = Color( 0.0750422, 0.976563, 0.0228882, 1 )
+custom_colors/font_color_pressed = Color( 0.957031, 0.037384, 0.037384, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Back to Menu"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Desert Mayhem" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 3 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[connection signal="pressed" from="back_to_menu" to="." method="_on_back_to_menu_pressed"]
+
+
